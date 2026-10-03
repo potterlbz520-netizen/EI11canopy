@@ -1,0 +1,628 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>EI-11 闸口雨棚</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700&display=swap">
+<style>
+/* Layout: drawing-sheet logic — a sticky title-block index on the left, sheets of content on the right; data set in mono like a drawing register */
+:root{
+  --paper:#f3f5f4; --sheet:#ffffff; --ink:#15283a; --ink-2:#4a5d6e; --rule:#cfd8dc; --rule-2:#e4e9eb;
+  --steel:#2f6f8f; --steel-soft:#e3eef3; --signal:#e8b10f; --signal-soft:#fff4d1;
+  --crit:#b8432f; --crit-soft:#f9e6e1; --ok:#2f7a55; --ok-soft:#e1f1e8;
+  --f-disp:"Barlow Condensed","Noto Sans SC",system-ui,sans-serif;
+  --f-body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#0f1820; --sheet:#15212b; --ink:#e3ebf0; --ink-2:#9db0bd; --rule:#2c3d4a; --rule-2:#22323d;
+  --steel:#6fb3d4; --steel-soft:#1b3342; --signal:#f0c23a; --signal-soft:#3a3016;
+  --crit:#ef8a73; --crit-soft:#3d221d; --ok:#6cc59a; --ok-soft:#1a3528; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#0f1820; --sheet:#15212b; --ink:#e3ebf0; --ink-2:#9db0bd; --rule:#2c3d4a; --rule-2:#22323d;
+  --steel:#6fb3d4; --steel-soft:#1b3342; --signal:#f0c23a; --signal-soft:#3a3016;
+  --crit:#ef8a73; --crit-soft:#3d221d; --ok:#6cc59a; --ok-soft:#1a3528; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.7;margin:0}
+.wrap{max-width:1240px;margin:0 auto;padding-inline:20px;padding-block:24px 80px;display:grid;grid-template-columns:220px minmax(0,1fr);gap:28px}
+@media (max-width:900px){.wrap{grid-template-columns:minmax(0,1fr);padding-inline:16px}.toc{display:none}}
+.toc{position:sticky;top:calc(env(safe-area-inset-top,0px) + 16px);align-self:start;border:1px solid var(--rule);background:var(--sheet);font-size:13px}
+.toc .tb{padding:12px 14px;border-bottom:1px solid var(--rule);font-family:var(--f-mono);font-size:11px;color:var(--ink-2);line-height:1.5}
+.toc .tb b{display:block;font-family:var(--f-disp);font-size:20px;color:var(--ink);letter-spacing:.02em}
+.toc a{display:grid;grid-template-columns:32px 1fr;padding:7px 14px;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule-2)}
+.toc a span{font-family:var(--f-mono);color:var(--steel);font-size:11px;padding-top:2px}
+.toc a:hover,.toc a:focus-visible{background:var(--steel-soft);outline:none}
+main{min-width:0;display:flex;flex-direction:column;gap:22px}
+section.sheet{background:var(--sheet);border:1px solid var(--rule);padding:28px clamp(16px,3vw,36px);min-width:0}
+.sheet-h{display:flex;align-items:baseline;gap:14px;border-bottom:2px solid var(--ink);padding-bottom:8px;margin-bottom:18px;flex-wrap:wrap}
+.sheet-h .no{font-family:var(--f-mono);font-size:12px;color:var(--steel);letter-spacing:.08em}
+h1,h2,h3{text-wrap:balance;margin:0}
+h2{font-family:var(--f-body);font-size:22px;font-weight:700}
+h2 small{font-family:var(--f-disp);font-weight:500;font-size:16px;color:var(--ink-2);letter-spacing:.04em;margin-left:8px;text-transform:uppercase}
+h3{font-size:16px;font-weight:700;margin:22px 0 8px}
+p{margin:0 0 10px;max-width:72ch}
+.muted{color:var(--ink-2)}
+.mono{font-family:var(--f-mono);font-size:.92em}
+.num{font-family:var(--f-mono);font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+/* hero */
+.hero{background:var(--sheet);border:1px solid var(--rule);display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr)}
+@media (max-width:760px){.hero{grid-template-columns:minmax(0,1fr)}}
+.hero-l{padding:28px clamp(16px,3vw,36px);border-right:1px solid var(--rule)}
+.eyebrow{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;color:var(--steel);text-transform:uppercase}
+.hero h1{font-family:var(--f-disp);font-size:clamp(38px,6vw,64px);line-height:.95;font-weight:700;letter-spacing:.01em;margin:10px 0 6px}
+.hero h1 em{font-style:normal;color:var(--steel)}
+.hero .cn{font-size:20px;font-weight:700;margin-bottom:12px}
+.hero-r{display:grid;grid-template-columns:1fr 1fr}
+.kv{padding:14px 18px;border-bottom:1px solid var(--rule);border-left:1px solid var(--rule-2)}
+.kv:nth-child(odd){border-left:none}
+.kv .k{font-size:11px;color:var(--ink-2);letter-spacing:.06em}
+.kv .v{font-family:var(--f-disp);font-size:28px;font-weight:600;line-height:1.1}
+.kv .v small{font-size:14px;color:var(--ink-2);font-weight:500;margin-left:3px}
+.kv.wide{grid-column:1/-1;border-left:none;background:var(--signal-soft)}
+.alert{display:flex;gap:12px;align-items:flex-start;background:var(--crit-soft);border-left:4px solid var(--crit);padding:12px 16px;margin-top:16px}
+.alert b{color:var(--crit)}
+/* tables */
+.tblwrap{overflow-x:auto;border:1px solid var(--rule);margin:8px 0 14px}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th,td{padding:7px 10px;border-bottom:1px solid var(--rule-2);vertical-align:top;text-align:left}
+th{font-size:11.5px;font-weight:500;color:var(--ink-2);background:var(--paper);letter-spacing:.04em;white-space:nowrap}
+tr.sub td{background:var(--steel-soft);font-weight:700}
+tr.tot td{border-top:2px solid var(--ink);font-weight:700}
+td .note{display:block;font-size:12px;color:var(--ink-2)}
+.chip{display:inline-block;font-size:11px;padding:1px 7px;border-radius:3px;font-weight:500;white-space:nowrap;vertical-align:1px}
+.c-add{background:var(--signal-soft);color:var(--ink);border:1px solid var(--signal)}
+.c-prov{background:var(--steel-soft);color:var(--steel);border:1px solid var(--steel)}
+.c-crit{background:var(--crit-soft);color:var(--crit);border:1px solid var(--crit)}
+.c-ok{background:var(--ok-soft);color:var(--ok);border:1px solid var(--ok)}
+/* grids */
+.g3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.g2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.card{border:1px solid var(--rule);padding:14px 16px;min-width:0}
+.card h4{margin:0 0 4px;font-size:14px}
+.card .big{font-family:var(--f-disp);font-size:30px;font-weight:600;line-height:1.1}
+.doc{border-top:3px solid var(--steel);background:var(--paper);padding:14px 16px;min-width:0}
+.doc .ref{font-family:var(--f-mono);font-size:12px;color:var(--steel);word-break:break-all}
+ul.clean{margin:0;padding-left:1.1em}
+ul.clean li{margin-bottom:4px}
+/* svg */
+.fig{border:1px solid var(--rule);background:var(--paper);padding:10px;overflow-x:auto}
+.fig svg{display:block;min-width:640px;width:100%;height:auto}
+.fig .cap{font-size:12px;color:var(--ink-2);margin-top:4px}
+/* quote controls */
+.ctrl{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:flex-end;background:var(--paper);border:1px solid var(--rule);padding:12px 14px;margin-bottom:12px}
+.ctrl label{display:flex;flex-direction:column;font-size:12px;color:var(--ink-2);gap:3px}
+.ctrl input[type=number]{width:78px;font-family:var(--f-mono);font-size:14px;padding:5px 6px;border:1px solid var(--rule);background:var(--sheet);color:var(--ink)}
+.ctrl .chk{flex-direction:row;align-items:center;gap:6px;font-size:13px;color:var(--ink)}
+input:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--steel);outline-offset:2px}
+.sumgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border:1px solid var(--rule);margin-bottom:14px}
+.sumgrid div{padding:10px 14px;border-right:1px solid var(--rule-2);border-bottom:1px solid var(--rule-2)}
+.sumgrid .k{font-size:11.5px;color:var(--ink-2)}
+.sumgrid .v{font-family:var(--f-mono);font-size:16px;font-variant-numeric:tabular-nums;white-space:nowrap}
+@media (max-width:700px){.sumgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.sumgrid .v{font-size:14px}}
+.sumgrid .hl{background:var(--ink);color:var(--sheet)}
+.sumgrid .hl .k{color:var(--sheet);opacity:.75}
+details.sec{border:1px solid var(--rule);margin-bottom:8px}
+details.sec>summary{cursor:pointer;padding:10px 14px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-weight:700;background:var(--paper);list-style:none}
+details.sec>summary>span:first-child::before{content:"+";font-family:var(--f-mono);color:var(--steel);margin-right:8px}
+details.sec[open]>summary>span:first-child::before{content:"−"}
+details.sec>summary .num{font-weight:500}
+details.sec .tblwrap{margin:0;border:none;border-top:1px solid var(--rule)}
+/* gantt */
+.gantt{overflow-x:auto;border:1px solid var(--rule)}
+.gt{min-width:860px;display:grid;grid-template-columns:250px 1fr;font-size:12.5px}
+.gt .lbl{padding:5px 10px;border-bottom:1px solid var(--rule-2);border-right:1px solid var(--rule);min-height:30px;display:flex;align-items:center;gap:6px}
+.gt .lane{position:relative;border-bottom:1px solid var(--rule-2);min-height:30px;background-image:linear-gradient(to right,var(--rule-2) 1px,transparent 1px);background-size:calc(100%/8) 100%}
+.gt .grp{background:var(--paper);font-weight:700;font-size:12px;letter-spacing:.04em;color:var(--ink-2)}
+.bar{position:absolute;top:8px;height:14px;background:var(--steel);border-radius:2px}
+.bar.crit{background:var(--crit)}
+.bar.ms{width:12px!important;height:12px;top:9px;transform:rotate(45deg);background:var(--signal);border-radius:0}
+.gt .hdr{position:relative;height:28px;border-bottom:1px solid var(--rule);background:var(--paper)}
+.gt .hdr span{position:absolute;top:6px;font-family:var(--f-mono);font-size:11px;color:var(--ink-2);padding-left:6px}
+.today{position:absolute;top:0;bottom:0;width:0;border-left:2px dashed var(--signal);z-index:2}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--ink-2);margin-top:8px}
+.legend i{display:inline-block;width:14px;height:10px;margin-right:5px;vertical-align:-1px}
+/* org */
+.org{display:flex;flex-direction:column;align-items:center;gap:14px}
+.org .row{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+.org .box{border:1px solid var(--ink);background:var(--sheet);padding:8px 12px;text-align:center;font-size:13px;min-width:130px}
+.org .box b{display:block;font-size:13.5px}
+.org .box small{color:var(--ink-2);font-size:11.5px}
+.org .box.top{background:var(--ink);color:var(--sheet)}
+.org .box.top small{color:var(--sheet);opacity:.75}
+.org .box.sub{border-style:dashed}
+.org .vline{width:1px;height:14px;background:var(--ink)}
+ol.steps{counter-reset:s;list-style:none;padding:0;margin:0;display:grid;gap:10px}
+ol.steps>li{counter-increment:s;display:grid;grid-template-columns:42px minmax(0,1fr);gap:12px;border-bottom:1px solid var(--rule-2);padding-bottom:10px}
+ol.steps>li::before{content:counter(s,decimal-leading-zero);font-family:var(--f-disp);font-size:26px;font-weight:600;color:var(--steel);line-height:1}
+ol.steps b{display:block}
+.q{border-left:3px solid var(--signal);padding:8px 14px;background:var(--paper);margin-bottom:8px}
+.q b{font-family:var(--f-mono);color:var(--steel);margin-right:6px}
+footer{font-size:12px;color:var(--ink-2);padding:10px 4px}
+@media (prefers-reduced-motion:no-preference){.bar{transition:opacity .2s}}
+</style>
+
+<div class="wrap">
+<nav class="toc" aria-label="目录">
+  <div class="tb"><b>EI No.11</b>LICTPH1-JPPI-CHEC-LW-ERI-0011<br>Gate Canopy Structures<br>工作底稿 · 2026-10-02</div>
+  <a href="#s1"><span>01</span>这是什么工程</a>
+  <a href="#s2"><span>02</span>文件链与合同时限</a>
+  <a href="#s3"><span>03</span>图纸技术解读</a>
+  <a href="#s4"><span>04</span>初步报价</a>
+  <a href="#s5"><span>05</span>BOQ 漏项与澄清</a>
+  <a href="#s6"><span>06</span>施工组织与资源</a>
+  <a href="#s7"><span>07</span>施工方法</a>
+  <a href="#s8"><span>08</span>进度计划</a>
+  <a href="#s9"><span>09</span>质量与安全</a>
+  <a href="#s10"><span>10</span>建议书与下一步</a>
+  <a href="#s11"><span>11</span>待确认问题</a>
+</nav>
+
+<main>
+<header class="hero">
+  <div class="hero-l">
+    <div class="eyebrow">South Luzon Container Terminal Ph.1 · Landside Works · Variation</div>
+    <h1>Truck Gate <em>Canopy</em><br>Structures</h1>
+    <div class="cn">集卡闸口雨棚（3 座）—— 变更项目说明、报价与施工组织</div>
+    <p class="muted">依据：Jacobs 来函 LICTPH1-JPPI-CHEC-LW-LTR-0089、工程师指令 EI No.11、图纸发文 DTX-0013 及随附 BOQ。报价为市场价初估，用于内部决策和编制 13.3 变更建议书，不是对外报价。</p>
+    <div class="alert"><div><b>今天是建议书截止日。</b> EI 日期 2026-09-18，Sub-Clause 13.3 要求 14 天内提交，即 <span class="mono">2026-10-02</span>。CHEC 收文登记为 10-01。建议今天先发确认函：确认收到 EI、承诺在 10-16 前提交完整建议书，并对费用和工期保留权利。</div></div>
+  </div>
+  <div class="hero-r">
+    <div class="kv"><div class="k">雨棚数量</div><div class="v">3<small>座 · 12 根柱</small></div></div>
+    <div class="kv"><div class="k">钢结构</div><div class="v">132.7<small>t</small></div></div>
+    <div class="kv"><div class="k">PTFE 膜屋面</div><div class="v">810<small>m²</small></div></div>
+    <div class="kv"><div class="k">G40 混凝土</div><div class="v">288<small>m³</small></div></div>
+    <div class="kv"><div class="k">LED 投光灯</div><div class="v">54<small>套</small></div></div>
+    <div class="kv"><div class="k">建议工期</div><div class="v">≈ 8<small>个月</small></div></div>
+    <div class="kv wide"><div class="k">初步报价（不含 VAT，按下方默认费率）</div><div class="v" id="heroTotal">—</div><div class="k" id="heroRange"></div></div>
+  </div>
+</header>
+
+<section class="sheet" id="s1">
+  <div class="sheet-h"><span class="no">SHEET 01</span><h2>这是什么工程<small>Project description</small></h2></div>
+  <p>业主 Bauan International Port, Inc.（ICTSI 旗下）要在码头陆域的集卡闸口区上方加建 <b>3 座大跨度钢桁架膜结构雨棚</b>，分别覆盖 <b>入口闸 In-Gate</b>、<b>编组闸 Marshalling Gate</b> 和 <b>出口闸 Out-Gate</b> 的车道。集卡在闸口停车办理验箱、OCR 识别和单证手续，雨棚给车道、闸口设备和作业人员遮阳挡雨，并在夜间提供照明。面向来车方向的桁架上挂标识牌（如 IN GATE / EXIT），带背光照明。</p>
+  <p>这项工作原合同里没有，属于 <b>Extra Work（新增工程）</b>。EI 表上已勾选 Cost Impact: YES、Variation Order: YES、费用由 Client 承担，按 FIDIC Sub-Clause 13.3 走变更程序。</p>
+
+  <h3>结构形式</h3>
+  <div class="g2">
+    <div>
+      <ul class="clean">
+        <li><b>基础</b>：每座 4 个独立基础 F1（4.0×5.0×1.0 m），上设 900×900 墩柱，高 2.2 m；G40 混凝土。每柱 12 根 M45 地脚螺栓（F1554 Gr55，热镀锌，埋深 1000 mm）。</li>
+        <li><b>柱</b>：每座 4 根 HSS18×1.000 圆钢管柱（Ø457×25.4 mm），850×850×60 底板，全熔透焊（CJP）。</li>
+        <li><b>主桁架 T1</b>：两榀弧形三角桁架（弦杆 HSS10×0.625，腹杆 HSS5×0.5），沿车道横向布置，弧半径约 90 m，跨中最高。中间主跨架在两柱之间，两端悬挑。</li>
+        <li><b>次桁架</b>：T2/T3/T4 中线纵向桁架，T5 柱顶横向桁架，T6 分格桁架，T7 标识牌桁架（是否需要待标识供应商确认），另有 HSS4.5 水平支撑。</li>
+        <li><b>屋面</b>：PTFE 重型张拉膜（可选 PVC-PVDF），设计寿命 35 年，透光率 18%，四边排水，按 NSCP 风速 260 km/h 设计。</li>
+        <li><b>防腐</b>：全部钢构件按 GA-1006 中 Paint System B 防腐。</li>
+        <li><b>电气</b>：桁架下吊装 Dialight 234W LED 投光灯，3 个不锈钢 IP66 配电箱，从北堆场变电所 LV SWGR 03 引电，带定时器和手动/自动控制。</li>
+      </ul>
+    </div>
+    <div class="fig">
+      <svg viewBox="0 0 720 300" role="img" aria-label="入口闸雨棚剖面示意图，按比例绘制">
+        <!-- scale: 1 m = 16 px horizontally and vertically; origin x=60 at left edge; ground EL+7.79 at y=250 -->
+        <g fill="none" stroke="currentColor" style="color:var(--ink)">
+          <line x1="20" y1="250" x2="700" y2="250" stroke-width="1.5"/>
+          <path d="M60 162 Q 366 120 672 165" stroke-width="2.5"/>
+          <path d="M60 162 L 60 155 Q 366 102 672 157 L672 165" stroke-width="1" opacity=".55"/>
+          <path d="M60 162 Q 366 136 672 165" stroke-width="2.5" transform="translate(0,22)" />
+        </g>
+        <g stroke="var(--ink)" stroke-width="1" opacity=".6">
+          <line x1="96" y1="160" x2="110" y2="181"/><line x1="130" y1="154" x2="110" y2="181"/><line x1="130" y1="154" x2="150" y2="176"/><line x1="170" y1="149" x2="150" y2="176"/><line x1="170" y1="149" x2="190" y2="172"/><line x1="210" y1="145" x2="190" y2="172"/><line x1="210" y1="145" x2="230" y2="169"/><line x1="250" y1="142" x2="230" y2="169"/><line x1="250" y1="142" x2="270" y2="167"/><line x1="290" y1="140" x2="270" y2="167"/><line x1="290" y1="140" x2="310" y2="165"/><line x1="330" y1="139" x2="310" y2="165"/><line x1="330" y1="139" x2="350" y2="164"/><line x1="370" y1="138" x2="350" y2="164"/><line x1="370" y1="138" x2="390" y2="164"/><line x1="410" y1="139" x2="390" y2="164"/><line x1="410" y1="139" x2="430" y2="165"/><line x1="450" y1="140" x2="430" y2="165"/><line x1="450" y1="140" x2="470" y2="166"/><line x1="490" y1="142" x2="470" y2="166"/><line x1="490" y1="142" x2="510" y2="168"/><line x1="530" y1="145" x2="510" y2="168"/><line x1="530" y1="145" x2="550" y2="171"/><line x1="570" y1="148" x2="550" y2="171"/><line x1="570" y1="148" x2="590" y2="175"/><line x1="610" y1="152" x2="590" y2="175"/><line x1="610" y1="152" x2="630" y2="179"/><line x1="650" y1="157" x2="630" y2="179"/>
+        </g>
+        <!-- columns at x = 60+5.965*16=155, 155+23.5*16=531 -->
+        <g fill="var(--steel)"><rect x="150" y="166" width="10" height="84"/><rect x="526" y="171" width="10" height="79"/></g>
+        <g fill="var(--rule)" stroke="var(--ink-2)"><rect x="123" y="250" width="64" height="16"/><rect x="499" y="250" width="64" height="16"/><rect x="148" y="250" width="14" height="0"/></g>
+        <g font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--ink-2)">
+          <line x1="60" y1="60" x2="672" y2="60" stroke="var(--ink-2)"/>
+          <line x1="60" y1="54" x2="60" y2="66" stroke="var(--ink-2)"/><line x1="155" y1="54" x2="155" y2="66" stroke="var(--ink-2)"/><line x1="531" y1="54" x2="531" y2="66" stroke="var(--ink-2)"/><line x1="672" y1="54" x2="672" y2="66" stroke="var(--ink-2)"/>
+          <text x="92" y="52">5 965</text><text x="318" y="52">23 500 主跨</text><text x="580" y="52">8 760</text>
+          <text x="220" y="30" fill="var(--ink)">总长 38 225 · 宽 8 000（垂直纸面）</text>
+          <text x="380" y="118">HP EL+16.875</text>
+          <text x="585" y="200">BOT EL+13.290</text>
+          <text x="590" y="244">PL EL+7.790</text>
+          <line x1="340" y1="186" x2="340" y2="250" stroke="var(--crit)" stroke-dasharray="3 3"/>
+          <text x="346" y="226" fill="var(--crit)">净空 ≥ 5 500</text>
+          <text x="166" y="214">HSS18×1.000</text>
+          <text x="104" y="285">F1 基础 4.0×5.0×1.0</text>
+        </g>
+      </svg>
+      <div class="cap">入口闸雨棚剖面示意（按比例简化，依据 AR-3690 / ST-3701 / ST-3703）。三座雨棚形式相同，跨度和标高不同。</div>
+    </div>
+  </div>
+
+  <h3>三座雨棚参数对比</h3>
+  <div class="tblwrap"><table>
+    <thead><tr><th>项目</th><th>入口闸 In-Gate</th><th>编组闸 Marshalling</th><th>出口闸 Out-Gate</th><th>来源</th></tr></thead>
+    <tbody>
+      <tr><td>平面尺寸（长×宽）</td><td class="num">38.225 × 8.0 m</td><td class="num">32.420 × 8.0 m</td><td class="num">28.725 × 8.0 m</td><td class="mono">AR-3690~3692</td></tr>
+      <tr><td>悬挑 + 主跨 + 悬挑</td><td class="num">5.965 + 23.5 + 8.76</td><td class="num">5.45 + 18.8 + 8.17</td><td class="num">5.37 + 14.1 + 9.255</td><td class="mono">AR / ST-3720</td></tr>
+      <tr><td>地坪标高 PL</td><td class="num">+7.790</td><td class="num">+6.040</td><td class="num">+7.725</td><td class="mono">ST-3720</td></tr>
+      <tr><td>桁架底 / 屋面最高点</td><td class="num">+13.290 / +16.875</td><td class="num">+11.540 / +15.030</td><td class="num">+13.225 / +16.702</td><td class="mono">AR-369x</td></tr>
+      <tr><td>净空（最小）</td><td class="num">5.5 m 边 / 7.5 m 中</td><td class="num">5.5 m 边 / 7.5 m 中</td><td class="num">5.5 m 边 / 7.5 m 中</td><td class="mono">AR-369x</td></tr>
+      <tr><td>钢结构（BOQ）</td><td class="num">50.0 t</td><td class="num">43.4 t</td><td class="num">39.3 t</td><td class="mono">BOQ 1.6</td></tr>
+      <tr><td>膜面积（BOQ）</td><td class="num">310 m²</td><td class="num">265 m²</td><td class="num">235 m²</td><td class="mono">BOQ 2.1</td></tr>
+      <tr><td>标识牌（BOQ）</td><td class="num">60 m²</td><td class="num">—</td><td class="num">50 m²</td><td class="mono">BOQ 2.2</td></tr>
+      <tr><td>投光灯 / 配电箱</td><td class="num">21 套 / IG-01 160A</td><td class="num">18 套 / IML-01 100A</td><td class="num">15 套 / OG-01 100A</td><td class="mono">EL-4219, EL-4237~4239</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted">复核：BOQ 膜面积 ≈ 长×宽（38.2×8=306，32.4×8=259，28.7×8=230）+ 收边余量，吻合。钢结构按构件长度粗算入口闸约 40 t 净重，加节点板和连接后约 45 t，BOQ 取 50 t，偏宽但合理。</p>
+</section>
+
+<section class="sheet" id="s2">
+  <div class="sheet-h"><span class="no">SHEET 02</span><h2>文件链与合同时限<small>Documents &amp; time bars</small></h2></div>
+  <div class="g3">
+    <div class="doc"><div class="ref">LICTPH1-JPPI-CHEC-LW-LTR-0089</div><h4>Jacobs 转发函</h4><p class="muted">2026-09-18，Choy Keen Yap（工程师代表）致 CHEC 马振。按 Clause 3.3 转发 EI No.11，要求回复。CHEC 收文单 10-01 登记，批示由 CC 牵头，抄送 QC、技术、合同、施工队、疏浚队。</p></div>
+    <div class="doc"><div class="ref">LICTPH1-JPPI-CHEC-LW-ERI-0011</div><h4>工程师指令 EI No.11</h4><p class="muted">指令施工完成闸口雨棚。要求<b>收到即开工</b>，并在 <b>14 天内</b>按 13.3 提交建议书（含进度计划、资源计划、费用建议及支持文件）。附件 A：图纸发文；附件 B：BOQ。</p></div>
+    <div class="doc"><div class="ref">LICTPH1-JPPI-CHEC-LW-DTX-0013</div><h4>施工图发文</h4><p class="muted">For Construction 图纸 41 张。雨棚专用新图：AR-3690~3692、ST-3701~3709、ST-3715/3716/3720、照明 EL-4219，配电箱 EL-4237~4239；其余为受影响的总图、电缆路由、管井排管图修订版。</p></div>
+  </div>
+  <h3>关键日期</h3>
+  <div class="tblwrap"><table>
+    <thead><tr><th>日期</th><th>事项</th><th>依据</th><th>状态</th></tr></thead>
+    <tbody>
+      <tr><td class="num">2026-09-18</td><td>EI 及图纸签发</td><td>Cl. 3.3</td><td><span class="chip c-ok">已发生</span></td></tr>
+      <tr><td class="num">2026-10-01</td><td>CHEC 登记收文（滞后 13 天）</td><td>收文单</td><td><span class="chip c-ok">已发生</span></td></tr>
+      <tr><td class="num">2026-10-02</td><td>变更建议书 14 天期限届满</td><td>Cl. 13.3 / EI</td><td><span class="chip c-crit">今天</span></td></tr>
+      <tr><td class="num">2026-10-16</td><td>建议提交完整建议书的目标日期（需在确认函中说明）</td><td>—</td><td><span class="chip c-prov">建议</span></td></tr>
+      <tr><td class="num">2026-10-16</td><td>若 EI 影响关键线路，按 Cl. 20.2 发索赔通知的保守期限（自 09-18 起 28 天）</td><td>Cl. 8.5 / 20.2</td><td><span class="chip c-add">需判断</span></td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted">EI 要求“立即开工”，而价格要等工程师审定。开工后必须同步记录人工、机械、材料（同期记录，Cl. 20.2.3），如果双方谈不拢价格，就按 Cl. 12.3 估价，记录是唯一的依据。</p>
+</section>
+
+<section class="sheet" id="s3">
+  <div class="sheet-h"><span class="no">SHEET 03</span><h2>图纸技术解读<small>Drawing review</small></h2></div>
+  <h3>主要构件</h3>
+  <div class="tblwrap"><table>
+    <thead><tr><th>构件</th><th>规格</th><th>近似尺寸（mm）</th><th>线重</th><th>位置</th></tr></thead>
+    <tbody>
+      <tr><td>柱</td><td class="mono">HSS18×1.000</td><td class="num">Ø457 × 25.4</td><td class="num">≈ 273 kg/m</td><td>每座 4 根，柱顶 C-2 拼接</td></tr>
+      <tr><td>T1、T5 弦杆</td><td class="mono">HSS10×0.625</td><td class="num">Ø273 × 15.9</td><td class="num">≈ 93 kg/m</td><td>主桁架，高 1.5~1.8 m</td></tr>
+      <tr><td>T1/T5 腹杆、T6 弦杆</td><td class="mono">HSS5×0.5</td><td class="num">Ø127 × 12.7</td><td class="num">≈ 35 kg/m</td><td></td></tr>
+      <tr><td>T2/T3/T4 弦杆</td><td class="mono">HSS6×0.5</td><td class="num">Ø152 × 12.7</td><td class="num">≈ 43 kg/m</td><td>中线纵向桁架</td></tr>
+      <tr><td>次腹杆</td><td class="mono">HSS4×0.188</td><td class="num">Ø102 × 4.8</td><td class="num">≈ 11 kg/m</td><td></td></tr>
+      <tr><td>水平支撑</td><td class="mono">HSS4.5×0.188</td><td class="num">Ø114 × 4.8</td><td class="num">≈ 13 kg/m</td><td>连上弦</td></tr>
+      <tr><td>柱底板</td><td class="mono">PL 850×850×60</td><td class="num">12 孔 Ø51，BCD 690</td><td class="num">≈ 340 kg/块</td><td>CJP 焊</td></tr>
+      <tr><td>柱顶板</td><td class="mono">PL t=25</td><td class="num">外伸 50</td><td></td><td>C-2 拼接</td></tr>
+    </tbody>
+  </table></div>
+  <h3>基础 F1 配筋表（ST-3720）</h3>
+  <div class="tblwrap"><table>
+    <thead><tr><th>雨棚</th><th>柱距 A×B</th><th>基础 C×E×G</th><th>底/顶筋</th><th>墩柱 D×F×H</th><th>墩柱筋</th><th>地脚螺栓</th><th>TOC</th></tr></thead>
+    <tbody>
+      <tr><td>In-Gate</td><td class="num">23500×8000</td><td class="num">4000×5000×1000</td><td class="mono">Ø20@150 双层双向</td><td class="num">900×900×2200</td><td class="mono">7-Ø25 + 5-Ø25，箍 Ø12@50/100</td><td class="mono">12-Ø45 F1554 Gr55，埋 1000</td><td class="num">+7.790</td></tr>
+      <tr><td>Marshalling</td><td class="num">18800×8000</td><td class="num">同上</td><td class="mono">同上</td><td class="num">同上</td><td class="mono">同上</td><td class="mono">同上</td><td class="num">+6.040</td></tr>
+      <tr><td>Out-Gate</td><td class="num">14100×8000</td><td class="num">同上</td><td class="mono">同上</td><td class="num">同上</td><td class="mono">同上</td><td class="mono">同上</td><td class="num">+7.725</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted">BOQ 复核：每座基础混凝土 4×20 = 80 m³（BOQ 88），墩柱 4×1.78 = 7.1 m³（BOQ 8），垫层 80 m²（BOQ 88），基础侧模 72 m²（BOQ 80），墩柱模板 32 m²（BOQ 35）。BOQ 大约多给了 10%，可以接受；钢筋粗算基础约 6.8 t/座（BOQ 8.3），墩柱约 1.8 t/座（BOQ 2.0）。</p>
+  <h3>电气系统</h3>
+  <ul class="clean">
+    <li>灯具：Dialight ProSite F1E-N7L2-FDEN-VGN，234 W，IP54 以上，吸顶/支架安装于桁架下弦。入口闸 IG-01 3 回路 × 7 盏，编组闸 IML-01 3 回路 × 6 盏，出口闸 OG-01 3 回路 × 5 盏，共 54 盏，与 BOQ 一致。</li>
+    <li>配电箱：不锈钢 IP66（NEMA 4X）落地式，IG-01 主开关 160AT/4P，OG-01、IML-01 主开关 100AT/4P，各 8 回路（含备用），带接触器、24 h 电子定时器、手动/自动转换。</li>
+    <li>电源：北堆场变电所 LV SWGR 03，馈线规格见 Table 1（本次发文未见）；接地电阻 ≤ 1 Ω。</li>
+    <li>分支电缆 CU/XLPE/LSZH 2C-4mm²+PE，Ø25 RSC 管沿桁架敷设，4×4 接线盒，每回路约 50 m。</li>
+  </ul>
+</section>
+
+<section class="sheet" id="s4">
+  <div class="sheet-h"><span class="no">SHEET 04</span><h2>初步报价<small>Preliminary estimate · PHP</small></h2></div>
+  <p>价格基准：2026 年第 3 季度八打雁地区市场价；汇率按 <span class="mono">USD 1 = PHP 58</span>；进口材料含海运、关税和清关费。下表单价为<b>直接成本</b>；管理费、利润、风险、保险保函按百分比加在下面，可以直接改。<b>BOQ-01~03</b> 对应工程师 BOQ 原有条目，<b>BOQ-04</b> 是工程师 BOQ 漏掉、但按图纸必须做的工作，<b>BOQ-00</b> 是变更专项措施费。</p>
+  <div class="ctrl" id="ctrl">
+    <label for="pIns">保险/保函 %<input type="number" id="pIns" value="0.6" step="0.1" min="0"></label>
+    <label for="pHo">总部管理费 %<input type="number" id="pHo" value="6" step="0.5" min="0"></label>
+    <label for="pRisk">风险/汇率 %<input type="number" id="pRisk" value="3" step="0.5" min="0"></label>
+    <label for="pProfit">利润 %<input type="number" id="pProfit" value="8" step="0.5" min="0"></label>
+    <label for="pVat">VAT %<input type="number" id="pVat" value="12" step="1" min="0"></label>
+    <label class="chk" for="incProv"><input type="checkbox" id="incProv" checked>计入暂定/条件项</label>
+    <label class="chk" for="showAll"><input type="checkbox" id="showAll">单价显示为综合单价</label>
+  </div>
+  <div class="sumgrid" id="sumgrid"></div>
+  <div id="boqTables"></div>
+
+  <h3>关键单价分析</h3>
+  <div class="g3">
+    <div class="card"><h4>1.6 钢结构 ₱198,000 / t</h4>
+      <div class="tblwrap"><table><tbody>
+        <tr><td>进口 HSS/CHS 材料（含 8% 损耗）</td><td class="num">92,000</td></tr>
+        <tr><td>加工：弯弧、相贯切割、CJP 焊、UT</td><td class="num">48,000</td></tr>
+        <tr><td>喷砂 + Paint System B</td><td class="num">22,000</td></tr>
+        <tr><td>海运、陆运、清关</td><td class="num">9,000</td></tr>
+        <tr><td>现场吊装（吊车、高空车、人工）</td><td class="num">24,000</td></tr>
+        <tr><td>螺栓、焊材、杂项</td><td class="num">3,000</td></tr>
+      </tbody></table></div>
+      <p class="muted">大口径厚壁 HSS18×1.000 菲律宾本地基本无货，按中国采购加工、整件海运考虑。弯弧（R≈90 m）和大量相贯 CJP 焊是加工费偏高的原因。</p></div>
+    <div class="card"><h4>2.1 PTFE 膜 ₱15,500 / m²</h4>
+      <div class="tblwrap"><table><tbody>
+        <tr><td>PTFE 膜材、找形裁剪、热合</td><td class="num">7,800</td></tr>
+        <tr><td>铝合金夹具、keder、不锈钢件</td><td class="num">2,600</td></tr>
+        <tr><td>专业分包设计及深化图</td><td class="num">1,300</td></tr>
+        <tr><td>安装张拉（含高空车）</td><td class="num">2,600</td></tr>
+        <tr><td>运输、关税</td><td class="num">1,200</td></tr>
+      </tbody></table></div>
+      <p class="muted">图纸允许改用 PVC-PVDF（寿命 20 年），单价约 ₱8,000/m²，三座可省约 ₱6M，但需工程师和业主书面同意。</p></div>
+    <div class="card"><h4>3.2a 投光灯 ₱124,000 / 套</h4>
+      <div class="tblwrap"><table><tbody>
+        <tr><td>Dialight 234W，约 USD 1,850 FOB</td><td class="num">107,300</td></tr>
+        <tr><td>运输、关税、清关</td><td class="num">8,600</td></tr>
+        <tr><td>安装支架、紧固件</td><td class="num">2,500</td></tr>
+        <tr><td>高空安装、接线、调光</td><td class="num">5,600</td></tr>
+      </tbody></table></div>
+      <p class="muted">图纸指定品牌和型号，价格须向菲律宾代理询价确认，交货期一般 10~12 周。</p></div>
+  </div>
+  <p class="muted">价格区间：直接成本取 −10% / +15% 反映询价前的不确定性。正式报价前至少拿到三家询价：钢结构加工（含中国厂家）、膜结构专业分包、Dialight 当地代理。</p>
+</section>
+
+<section class="sheet" id="s5">
+  <div class="sheet-h"><span class="no">SHEET 05</span><h2>BOQ 漏项与需澄清事项<small>Gaps &amp; technical queries</small></h2></div>
+  <p>工程师给的 BOQ 只有 3 页、21 个条目，按图纸施工还要做很多工作。下面这些已经计入上面的 BOQ-04 或 BOQ-00；建议书里单独列出，并附图纸依据。</p>
+  <div class="tblwrap"><table>
+    <thead><tr><th>#</th><th>事项</th><th>图纸依据</th><th>处理建议</th><th>类型</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>配电箱 IG-01 / OG-01 / IML-01 三台不在 BOQ</td><td class="mono">EL-4237~4239</td><td>新增条目 4.8</td><td><span class="chip c-add">漏项</span></td></tr>
+      <tr><td>2</td><td>LV SWGR 03 至配电箱馈线及出线开关；Table 1 未随图发出</td><td class="mono">EL-4238 Note 2</td><td>要求补发 Table 1，暂列 4.9</td><td><span class="chip c-prov">暂定</span></td></tr>
+      <tr><td>3</td><td>接地（≤1 Ω）、钢结构防雷与等电位连接</td><td class="mono">EL-4237 Note 1, EL-4111~4114</td><td>新增 4.10</td><td><span class="chip c-add">漏项</span></td></tr>
+      <tr><td>4</td><td>地脚螺栓 144 套、柱脚灌浆</td><td class="mono">ST-3716, ST-3720</td><td>新增 4.1、4.2（或确认已含在 1.6）</td><td><span class="chip c-add">漏项</span></td></tr>
+      <tr><td>5</td><td>回填压实、基础下压实垫层</td><td class="mono">ST-3720 剖面</td><td>新增 4.3、4.4</td><td><span class="chip c-add">漏项</span></td></tr>
+      <tr><td>6</td><td>基础与闸口路面的施工先后。若路面已做，需破除恢复</td><td class="mono">GA-1325</td><td>条件项 4.5</td><td><span class="chip c-prov">条件</span></td></tr>
+      <tr><td>7</td><td>膜结构连接节点、标识牌支架由承包商分包商设计并报批（设计责任转移）</td><td class="mono">AR-369x Note 3、4</td><td>计入设计费；建议书写明设计责任范围</td><td><span class="chip c-crit">合同风险</span></td></tr>
+      <tr><td>8</td><td>T7 标识桁架“视标识供应商确认是否需要”，钢量未定</td><td class="mono">ST-3701, ST-3703</td><td>建议书注明按 BOQ 吨位计价、实测实量</td><td><span class="chip c-prov">澄清</span></td></tr>
+      <tr><td>9</td><td>钢材标准写 A992 Gr.50，A992 是 H 型钢标准，圆管应为 A500 Gr.C 或 A1085</td><td class="mono">ST-37xx Note</td><td>发 RFI；同时提议等效 CHS 457×25 S355J2H</td><td><span class="chip c-crit">RFI</span></td></tr>
+      <tr><td>10</td><td>发文清单编号 EL-3690~3720 与图纸实际编号 AR-3690~3692 / ST-3701~3720 不一致</td><td class="mono">DTX-0013</td><td>RFI 要求更正发文清单</td><td><span class="chip c-prov">澄清</span></td></tr>
+      <tr><td>11</td><td>AR-3690（入口闸）平面图标题误写为 “TRUCK EXIT GATE”</td><td class="mono">AR-3690</td><td>同上</td><td><span class="chip c-prov">澄清</span></td></tr>
+      <tr><td>12</td><td>Paint System B 在 GA-1006 中定义，本次发文未附</td><td class="mono">GA-1006</td><td>确认涂层体系和总膜厚</td><td><span class="chip c-prov">澄清</span></td></tr>
+      <tr><td>13</td><td>T1 桁架弧长 38.6 m，整榀无法运输，需设现场拼接点</td><td class="mono">ST-3703</td><td>深化图中提出拼接位置报批</td><td><span class="chip c-prov">澄清</span></td></tr>
+      <tr><td>14</td><td>标识牌图文内容由业主提供，未定稿前不能出深化图</td><td class="mono">AR-369x Note 5</td><td>建议书写明业主提供期限（建议 2026-12-31 前）</td><td><span class="chip c-crit">工期风险</span></td></tr>
+      <tr><td>15</td><td>深化设计、第三方检测、吊装方案、措施费</td><td>Specification</td><td>BOQ-00、4.13~4.16</td><td><span class="chip c-add">漏项</span></td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section class="sheet" id="s6">
+  <div class="sheet-h"><span class="no">SHEET 06</span><h2>施工组织与资源计划<small>Organisation &amp; resources</small></h2></div>
+  <div class="org" aria-label="组织架构">
+    <div class="box top"><b>变更项目负责人</b><small>CHEC 项目部指定 · 对接 Jacobs</small></div>
+    <div class="vline"></div>
+    <div class="row">
+      <div class="box"><b>合同/商务</b><small>QS、变更估价、同期记录</small></div>
+      <div class="box"><b>技术/设计协调</b><small>深化图、RFI、分包设计</small></div>
+      <div class="box"><b>施工经理</b><small>现场组织与进度</small></div>
+      <div class="box"><b>QA/QC</b><small>ITP、检测、验收</small></div>
+      <div class="box"><b>HSE</b><small>吊装、高处、动火</small></div>
+    </div>
+    <div class="vline"></div>
+    <div class="row">
+      <div class="box"><b>土建班组</b><small>测量 · 开挖 · 钢筋 · 模板 · 混凝土</small></div>
+      <div class="box"><b>钢结构安装队</b><small>起重工 · 铆工 · 电焊工 · 油漆工</small></div>
+      <div class="box sub"><b>钢结构加工厂</b><small>分包 · 中国厂家优先</small></div>
+      <div class="box sub"><b>膜结构专业分包</b><small>设计 + 加工 + 安装</small></div>
+      <div class="box sub"><b>标识牌供应商</b><small>设计 + 制作 + 灯光</small></div>
+      <div class="box"><b>电气班组</b><small>埋管 · 敷缆 · 灯具 · 配电箱</small></div>
+    </div>
+  </div>
+  <p class="muted" style="margin-top:10px">虚线框为专业分包。现场管理人员尽量从主合同项目部兼任，只增加变更专项的现场工程师、钢结构和电气主管，对应 BOQ-00 中 0.1。</p>
+  <h3>劳动力计划（人）</h3>
+  <div class="tblwrap"><table>
+    <thead><tr><th>工种</th><th class="num">基础阶段<br>2026-10~12</th><th class="num">钢结构吊装<br>2027-03~04</th><th class="num">膜/电气/标识<br>2027-04~05</th></tr></thead>
+    <tbody>
+      <tr><td>管理及技术人员</td><td class="num">5</td><td class="num">6</td><td class="num">6</td></tr>
+      <tr><td>测量员</td><td class="num">2</td><td class="num">2</td><td class="num">1</td></tr>
+      <tr><td>钢筋工 / 木工 / 混凝土工</td><td class="num">18</td><td class="num">2</td><td class="num">—</td></tr>
+      <tr><td>起重工、司索、信号工</td><td class="num">2</td><td class="num">6</td><td class="num">3</td></tr>
+      <tr><td>铆工、电焊工（AWS D1.1 合格）</td><td class="num">—</td><td class="num">10</td><td class="num">2</td></tr>
+      <tr><td>油漆工（补漆）</td><td class="num">—</td><td class="num">3</td><td class="num">2</td></tr>
+      <tr><td>膜结构安装（分包）</td><td class="num">—</td><td class="num">—</td><td class="num">10</td></tr>
+      <tr><td>电工</td><td class="num">3</td><td class="num">2</td><td class="num">8</td></tr>
+      <tr><td>普工</td><td class="num">8</td><td class="num">6</td><td class="num">6</td></tr>
+      <tr class="tot"><td>合计（高峰）</td><td class="num">38</td><td class="num">37</td><td class="num">38</td></tr>
+    </tbody>
+  </table></div>
+  <h3>主要机械设备</h3>
+  <div class="tblwrap"><table>
+    <thead><tr><th>设备</th><th class="num">数量</th><th>用途</th><th>阶段</th></tr></thead>
+    <tbody>
+      <tr><td>100 t 全地面汽车吊</td><td class="num">1</td><td>主桁架 T1 吊装（单榀约 11 t，工作半径 ≤ 16 m）</td><td>2027-03~04</td></tr>
+      <tr><td>50 t 汽车吊</td><td class="num">1</td><td>柱、次桁架、抬吊配合、卸车</td><td>2027-03~04</td></tr>
+      <tr><td>25 t 随车吊 / 叉车</td><td class="num">1</td><td>堆场倒运</td><td>全程</td></tr>
+      <tr><td>20 m 曲臂式高空作业车</td><td class="num">3</td><td>螺栓连接、补漆、膜安装、灯具安装</td><td>2027-03~05</td></tr>
+      <tr><td>0.8 m³ 挖掘机 + 自卸车</td><td class="num">1 + 2</td><td>基坑开挖、余土外运</td><td>2026-10~11</td></tr>
+      <tr><td>混凝土泵车（42 m）</td><td class="num">按次</td><td>基础与墩柱浇筑</td><td>2026-11~12</td></tr>
+      <tr><td>振动压路机 / 蛙夯</td><td class="num">1 / 2</td><td>回填压实</td><td>2026-12~2027-01</td></tr>
+      <tr><td>全站仪、水准仪</td><td class="num">1 / 1</td><td>放线、螺栓定位、安装测控</td><td>全程</td></tr>
+      <tr><td>焊机、碳弧气刨、UT 探伤仪</td><td class="num">6 / 1 / 1</td><td>现场拼接焊</td><td>2027-03~04</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section class="sheet" id="s7">
+  <div class="sheet-h"><span class="no">SHEET 07</span><h2>施工方法<small>Method statement outline</small></h2></div>
+  <ol class="steps">
+    <li><div><b>施工准备</b>测量控制点复核（ST-3701/3704/3707 给出柱坐标，如 N1525010.261 / E498701.178）；地下管线探测和人工探坑；围挡和交通疏导方案报批；提交 ITP、焊接工艺评定（WPS/PQR）和吊装方案。</div></li>
+    <li><div><b>基础开挖与垫层</b>按 1:1 放坡开挖至基底，坑底遇水用集水井抽排；验槽后压实基底，浇 50 mm C15 垫层。三座雨棚流水施工，先做入口闸。</div></li>
+    <li><div><b>钢筋、地脚螺栓与模板</b>绑扎 Ø20@150 双层双向底板钢筋和墩柱插筋；地脚螺栓用 Ø690 钢模板整组定位，平面误差 ±3 mm、标高 ±5 mm，浇筑前由工程师验收（停检点）。</div></li>
+    <li><div><b>混凝土浇筑与养护</b>G40 商砼，基础一次浇筑约 20 m³/个，泵送。墩柱二次浇筑，施工缝凿毛。养护 7 天以上，28 天强度达标后才安装钢柱。每次浇筑取标准试块。</div></li>
+    <li><div><b>回填</b>分层回填压实，每层 ≤ 300 mm，检测压实度；与闸口路面结构层衔接。</div></li>
+    <li><div><b>工厂加工</b>钢管弦杆冷弯成弧（R≈90 m）；相贯线数控切割；CJP 焊缝 100% UT；整榀 T1 工厂预拼装并验收；按运输尺寸（≤ 12 m）分段；喷砂 Sa2.5 后按 Paint System B 涂装，出厂检测漆膜厚度。</div></li>
+    <li><div><b>运输与清关</b>中国港口发运至八打雁港，约 2~3 周（含清关）。构件编号、捆扎、防护按装箱单验收。</div></li>
+    <li><div><b>钢柱安装</b>吊装 HSS18 柱，调垂直度（≤ H/1000），拧紧螺母；底板下无收缩灌浆。柱顶设临时缆风。</div></li>
+    <li><div><b>桁架地面拼装与吊装</b>T1 分段在地面胎架上拼成整榀（拼接焊缝 UT 检测后补漆）。100 t 吊车单机吊装 T1（约 11 t），落在柱顶 C-2 节点就位；随后装 T5、T2/T3/T4、T6，最后装水平支撑和 T7。每座约 1.5~2 周。</div></li>
+    <li><div><b>膜屋面安装</b>膜分包现场复测钢结构尺寸后下料；铺展在安全网上，高空车配合安装夹具和 keder，分级张拉至设计预张力。只在风速 &lt; 30 km/h、无雨时作业。</div></li>
+    <li><div><b>标识牌与电气</b>T7 上装标识牌支架和面板；桁架上用免焊抱箍固定 RSC 管，穿线，吊装投光灯并调角度；配电箱基础、安装、接线、接地测试。</div></li>
+    <li><div><b>测试调试与移交</b>绝缘电阻、接地电阻（≤ 1 Ω）、回路功能、定时器和手/自动切换；夜间照度测量；整改尾项，提交竣工图和 O&amp;M 手册。</div></li>
+  </ol>
+</section>
+
+<section class="sheet" id="s8">
+  <div class="sheet-h"><span class="no">SHEET 08</span><h2>进度计划<small>Programme · Oct 2026 – May 2027</small></h2></div>
+  <p>关键线路是：<b>深化图审批 → 进口钢管采购 → 工厂加工 → 海运 → 吊装 → 膜安装 → 调试移交</b>。基础可以先做，不在关键线路上。计划完工约 <b>2027-05-21</b>，比 EI 签发晚约 8 个月；若主合同区段完工日期早于此，需在建议书中同时提出工期调整（Cl. 13.3.1 / 8.5）。</p>
+  <div class="gantt"><div class="gt" id="gantt"></div></div>
+  <div class="legend"><span><i style="background:var(--crit)"></i>关键线路</span><span><i style="background:var(--steel)"></i>非关键工作</span><span><i style="background:var(--signal);transform:rotate(45deg);width:9px;height:9px"></i>里程碑</span><span><i style="border-left:2px dashed var(--signal);width:2px;height:12px"></i>今天</span></div>
+  <p class="muted" style="margin-top:10px">压缩工期的办法：(1) 建议书提交当天就向工程师申请先批材料（钢管、地脚螺栓、灯具），不等价格谈完就下单，约省 4 周；(2) 改用 PVC-PVDF 膜，加工周期约短 3 周；(3) 中国厂家加工时可以同时出两座的构件。</p>
+</section>
+
+<section class="sheet" id="s9">
+  <div class="sheet-h"><span class="no">SHEET 09</span><h2>质量与安全要点<small>ITP &amp; HSE</small></h2></div>
+  <div class="g2">
+    <div>
+      <h3 style="margin-top:0">停检点（Hold Points）</h3>
+      <div class="tblwrap"><table>
+        <thead><tr><th>检查项</th><th>标准 / 允许偏差</th></tr></thead>
+        <tbody>
+          <tr><td>基槽验收</td><td>标高、土质、承载力</td></tr>
+          <tr><td>钢筋与地脚螺栓定位</td><td>螺栓平面 ±3 mm，标高 ±5 mm</td></tr>
+          <tr><td>混凝土浇筑放行</td><td>G40 配合比、坍落度、试块</td></tr>
+          <tr><td>钢材进厂复验</td><td>材质证明、力学复验</td></tr>
+          <tr><td>工厂预拼装验收（FAT）</td><td>拱度、长度、节点，CJP 100% UT</td></tr>
+          <tr><td>涂装验收</td><td>Sa2.5，DFT 按 System B</td></tr>
+          <tr><td>钢结构安装验收</td><td>柱垂直度 H/1000，桁架标高</td></tr>
+          <tr><td>膜张拉验收</td><td>预张力、褶皱、排水坡度</td></tr>
+          <tr><td>电气测试</td><td>绝缘、接地 ≤ 1 Ω、照度</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+    <div>
+      <h3 style="margin-top:0">主要安全风险</h3>
+      <ul class="clean">
+        <li><b>大件吊装</b>：T1 整榀约 11 t、长 38 m，风大易旋转。编制吊装方案和吊装令，风速 &gt; 32 km/h 停吊，两端设溜绳。</li>
+        <li><b>高处作业</b>：桁架底 11.5~13.3 m。用高空车作业，桁架上设生命线，作业人员挂双钩安全带。</li>
+        <li><b>动火作业</b>：现场拼接焊缝和补漆，办理动火许可，配灭火器和看火人。</li>
+        <li><b>交通</b>：既有通往汽车码头的道路和海关区靠近闸口，设隔离围挡和旗手，吊装时封闭吊装半径。</li>
+        <li><b>台风</b>：10~12 月仍是台风季。半安装状态的桁架和膜材，在 PAGASA 发布 Signal No.1 时立即加固或卸张。</li>
+        <li><b>基坑</b>：开挖深度约 3.3 m，放坡或支护，临边防护，及时回填。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="sheet" id="s10">
+  <div class="sheet-h"><span class="no">SHEET 10</span><h2>建议书与下一步<small>13.3 proposal checklist</small></h2></div>
+  <div class="g2">
+    <div>
+      <h3 style="margin-top:0">建议书应包含（EI 原文要求）</h3>
+      <ul class="clean">
+        <li>工作范围说明及对图纸的理解（本页 Sheet 01、03）</li>
+        <li>进度计划（Sheet 08，以 P6 或 MS Project 出正式版）及对竣工日期的影响</li>
+        <li>资源计划：人员、设备、分包（Sheet 06）</li>
+        <li>费用建议：按工程师 BOQ 格式填价 + 新增条目 BOQ-04 + 措施费 BOQ-00，附单价分析和询价单</li>
+        <li>假定条件、除外项和澄清事项清单（Sheet 05）</li>
+        <li>对设计责任（膜节点、标识支架）的范围说明</li>
+      </ul>
+    </div>
+    <div>
+      <h3 style="margin-top:0">本周行动</h3>
+      <ol class="steps">
+        <li><div><b>今天：发确认函</b>确认收到 EI，告知建议书于 10-16 前提交，保留费用和工期权利。</div></li>
+        <li><div><b>10-05 前：发 RFI</b>钢材标准、Table 1、GA-1006、图号错误、路面先后顺序。</div></li>
+        <li><div><b>10-09 前：询价</b>钢结构厂（中国 2 家、本地 1 家）、膜分包 3 家、Dialight 代理、标识供应商。</div></li>
+        <li><div><b>10-12 前：核对合同单价</b>主合同 BOQ 中开挖、G40 混凝土、钢筋、模板单价，按 Cl. 12.3 优先套用。</div></li>
+        <li><div><b>10-16：提交建议书</b>同时申请先行批准长周期材料采购。</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="sheet" id="s11">
+  <div class="sheet-h"><span class="no">SHEET 11</span><h2>待确认问题<small>Open questions</small></h2></div>
+  <p>以下问题的答案会直接改变报价结构，请回复后我更新本页：</p>
+  <div class="q"><b>Q1</b>报价立场：这是 CHEC 报给 Jacobs 的 13.3 变更建议书，还是广航作为分包向 CHEC 报价（由我们施工）？两者的管理费、利润和措施费口径不同。</div>
+  <div class="q"><b>Q2</b>主合同 Landside Works BOQ 里有没有开挖、G40 混凝土、钢筋、模板的合同单价？有的话 1.1~1.5 应套用合同单价，工程师一定会这样审。</div>
+  <div class="q"><b>Q3</b>合同价是否含 12% VAT？币种是否全部为 PHP？</div>
+  <div class="q"><b>Q4</b>能否提供 GA-1006（Paint System B）和配电箱馈线 Table 1？本次发文没有。</div>
+  <div class="q"><b>Q5</b>闸口区路面（GA-1325）现在是否已经施工？决定是否计入破除恢复费用。</div>
+  <div class="q"><b>Q6</b>主合同中闸口所在区段的完工日期是哪天？用来判断是否需要同时申请工期延长。</div>
+</section>
+<footer>依据 Jacobs LTR-0089、EI No.11（2026-09-18）、DTX-0013 For Construction 图纸及 Gate Canopy BOQ 编制。单价为 2026 年市场初估，未经询价；数量取自工程师 BOQ，已做抽查复核。</footer>
+</main>
+</div>
+
+<script>
+const ITEMS = [{"sec": "BOQ-01", "no": "1.1", "desc": "基坑开挖、部分回填整平、余土外运 – 入口闸 In-Gate", "unit": "m³", "qty": 264, "rate": 680, "amt": 179520, "note": "含放坡/局部降水、外运≤5 km", "tag": "boq"}, {"sec": "BOQ-01", "no": "1.1", "desc": "基坑开挖、部分回填整平、余土外运 – 编组闸 Marshalling", "unit": "m³", "qty": 264, "rate": 680, "amt": 179520, "note": "含放坡/局部降水、外运≤5 km", "tag": "boq"}, {"sec": "BOQ-01", "no": "1.1", "desc": "基坑开挖、部分回填整平、余土外运 – 出口闸 Out-Gate", "unit": "m³", "qty": 264, "rate": 680, "amt": 179520, "note": "含放坡/局部降水、外运≤5 km", "tag": "boq"}, {"sec": "BOQ-01", "no": "1.2", "desc": "50 mm C15 素混凝土垫层 – In-Gate", "unit": "m²", "qty": 88, "rate": 520, "amt": 45760, "note": "", "tag": "boq"}, {"sec": "BOQ-01", "no": "1.2", "desc": "50 mm C15 素混凝土垫层 – Marshalling", "unit": "m²", "qty": 88, "rate": 520, "amt": 45760, "note": "", "tag": "boq"}, {"sec": "BOQ-01", "no": "1.2", "desc": "50 mm C15 素混凝土垫层 – Out-Gate", "unit": "m²", "qty": 88, "rate": 520, "amt": 45760, "note": "", "tag": "boq"}, {"sec": "BOQ-01", "no": "1.3a", "desc": "G40 钢筋混凝土 – 独立基础 – In-Gate", "unit": "m³", "qty": 88, "rate": 9200, "amt": 809600, "note": "商砼约 ₱7,000/m³ + 泵送/振捣/养护/试块", "tag": "boq"}, {"sec": "BOQ-01", "no": "1.3a", "desc": "G40 钢筋混凝土 – 独立基础 – Marshalling", "unit": "m³", "qty": 88, "rate": 9200, "amt": 809600, "note": "商砼约 ₱7,000/m³ + 泵送/振捣/养护/试块", "tag": "boq"}, {"sec": "BOQ-01", "no": "1.3a", "desc": "G40 钢筋混凝土 – 独立基础 – Out-Gate", "unit": "m³", "qty": 88, "rate": 9200, "amt": 809600, "note": "商砼约 ₱7,000/m³ + 泵送/振捣/养护/试块", "tag": "boq"}, {"sec": "BOQ-01", "no": "1.3b", "desc": "G40 钢筋混凝土 – 墩柱 Pedestal – In-Gate", "unit": "m³", "qty": 8, "rate": 10800, "amt": 86400, "note": "小方量浇筑，泵车台班摊销高", "tag": "boq"}, {"sec": "BOQ-01", "no": "1.3b", "desc": "G40 钢筋混凝土 – 墩柱 Pedestal – Marshalling", "unit": "m³", "qty": 8, "rate": 10800, "amt": 86400, "note": "小方量浇筑，泵车台班摊销高", "tag": "boq"}, {"sec": "BOQ-01", "no": "1.3b", "desc": "G40 钢筋混凝土 – 墩柱 Pedestal – Out-Gate", "unit": "m³", "qty": 8, "rate": 10800, "amt": 86400, "note": "小方量浇筑，泵车台班摊销高", "tag": "boq"}, {"sec": "BOQ-01", "no": "1.4a", "desc": "高强钢筋 Gr.60 – 基础 – In-Gate", "unit": "t", "qty": 8.3, "rate": 64000, "amt": 531200, "note": "材料 ₱40/kg + 损耗5% + 加工绑扎", "tag": "boq"}, {"sec": "BOQ-01", "no": "1.4a", "desc": "高强钢筋 Gr.60 – 基础 – Marshalling", "unit": "t", "qty": 8.3, "rate": 64000, "amt": 531200, "note": "材料 ₱40/kg + 损耗5% + 加工绑扎", "tag": "boq"}, {"sec": "BOQ-01", "no": "1.4a", "desc": "高强钢筋 Gr.60 – 基础 – Out-Gate", "unit": "t", "qty": 8.3, "rate": 64000, "amt": 531200, "note": "材料 ₱40/kg + 损耗5% + 加工绑扎", "tag": "boq"}, {"sec": "BOQ-01", "no": "1.4b", "desc": "高强钢筋 Gr.60 – 墩柱 – In-Gate", "unit": "t", "qty": 2.0, "rate": 66000, "amt": 132000, "note": "Ø25 主筋 + Ø12@50/100 箍筋", "tag": "boq"}, {"sec": "BOQ-01", "no": "1.4b", "desc": "高强钢筋 Gr.60 – 墩柱 – Marshalling", "unit": "t", "qty": 2.0, "rate": 66000, "amt": 132000, "note": "Ø25 主筋 + Ø12@50/100 箍筋", "tag": "boq"}, {"sec": "BOQ-01", "no": "1.4b", "desc": "高强钢筋 Gr.60 – 墩柱 – Out-Gate", "unit": "t", "qty": 2.0, "rate": 66000, "amt": 132000, "note": "Ø25 主筋 + Ø12@50/100 箍筋", "tag": "boq"}, {"sec": "BOQ-01", "no": "1.5a", "desc": "模板 – 基础侧模 – In-Gate", "unit": "m²", "qty": 80, "rate": 1150, "amt": 92000, "note": "", "tag": "boq"}, {"sec": "BOQ-01", "no": "1.5a", "desc": "模板 – 基础侧模 – Marshalling", "unit": "m²", "qty": 80, "rate": 1150, "amt": 92000, "note": "", "tag": "boq"}, {"sec": "BOQ-01", "no": "1.5a", "desc": "模板 – 基础侧模 – Out-Gate", "unit": "m²", "qty": 80, "rate": 1150, "amt": 92000, "note": "", "tag": "boq"}, {"sec": "BOQ-01", "no": "1.5b", "desc": "模板 – 墩柱 – In-Gate", "unit": "m²", "qty": 35, "rate": 1450, "amt": 50750, "note": "含螺栓定位架支撑", "tag": "boq"}, {"sec": "BOQ-01", "no": "1.5b", "desc": "模板 – 墩柱 – Marshalling", "unit": "m²", "qty": 35, "rate": 1450, "amt": 50750, "note": "含螺栓定位架支撑", "tag": "boq"}, {"sec": "BOQ-01", "no": "1.5b", "desc": "模板 – 墩柱 – Out-Gate", "unit": "m²", "qty": 35, "rate": 1450, "amt": 50750, "note": "含螺栓定位架支撑", "tag": "boq"}, {"sec": "BOQ-01", "no": "1.6", "desc": "钢结构雨棚供应安装（HSS 圆管桁架+柱，含 System B 防腐） – In-Gate", "unit": "t", "qty": 50, "rate": 198000, "amt": 9900000, "note": "见钢结构单价分析", "tag": "boq"}, {"sec": "BOQ-01", "no": "1.6", "desc": "钢结构雨棚供应安装（HSS 圆管桁架+柱，含 System B 防腐） – Marshalling", "unit": "t", "qty": 43.4, "rate": 198000, "amt": 8593200, "note": "见钢结构单价分析", "tag": "boq"}, {"sec": "BOQ-01", "no": "1.6", "desc": "钢结构雨棚供应安装（HSS 圆管桁架+柱，含 System B 防腐） – Out-Gate", "unit": "t", "qty": 39.3, "rate": 198000, "amt": 7781400, "note": "见钢结构单价分析", "tag": "boq"}, {"sec": "BOQ-02", "no": "2.1", "desc": "PTFE 重型膜结构屋面（专业分包，含设计/裁剪/夹具/张拉） – In-Gate", "unit": "m²", "qty": 310, "rate": 15500, "amt": 4805000, "note": "可选 PVC-PVDF 约 ₱8,000/m²", "tag": "boq"}, {"sec": "BOQ-02", "no": "2.1", "desc": "PTFE 重型膜结构屋面（专业分包，含设计/裁剪/夹具/张拉） – Marshalling", "unit": "m²", "qty": 265, "rate": 15500, "amt": 4107500, "note": "可选 PVC-PVDF 约 ₱8,000/m²", "tag": "boq"}, {"sec": "BOQ-02", "no": "2.1", "desc": "PTFE 重型膜结构屋面（专业分包，含设计/裁剪/夹具/张拉） – Out-Gate", "unit": "m²", "qty": 235, "rate": 15500, "amt": 3642500, "note": "可选 PVC-PVDF 约 ₱8,000/m²", "tag": "boq"}, {"sec": "BOQ-02", "no": "2.2", "desc": "标识牌供应安装（含支架、连接） – In-Gate", "unit": "m²", "qty": 60, "rate": 26000, "amt": 1560000, "note": "图文内容由业主另行确定", "tag": "boq"}, {"sec": "BOQ-02", "no": "2.2", "desc": "标识牌供应安装（含支架、连接） – Out-Gate", "unit": "m²", "qty": 50, "rate": 26000, "amt": 1300000, "note": "图文内容由业主另行确定", "tag": "boq"}, {"sec": "BOQ-03", "no": "3.1.1a", "desc": "CU/XLPE/LSZH 0.6/1kV 1×2C-4mm²+PE 电缆（含接头、格兰头）", "unit": "m", "qty": 870, "rate": 340, "amt": 295800, "note": "", "tag": "boq"}, {"sec": "BOQ-03", "no": "3.2a", "desc": "Dialight ProSite 234W LED 投光灯（指定品牌）", "unit": "set", "qty": 54, "rate": 124000, "amt": 6696000, "note": "FOB 约 USD 1,850 ×58 + 运输关税 + 支架 + 高空安装调光", "tag": "boq"}, {"sec": "BOQ-03", "no": "3.2b", "desc": "标识牌照明（供应商配套）", "unit": "set", "qty": 2, "rate": 185000, "amt": 370000, "note": "LED 背光 + 驱动", "tag": "boq"}, {"sec": "BOQ-03", "no": "3.4a", "desc": "Ø25 mm RSC 镀锌钢管（含管件、管卡）", "unit": "m", "qty": 430, "rate": 560, "amt": 240800, "note": "", "tag": "boq"}, {"sec": "BOQ-03", "no": "3.4b", "desc": "Ø100 mm RSC 镀锌钢管", "unit": "m", "qty": 75, "rate": 3800, "amt": 285000, "note": "", "tag": "boq"}, {"sec": "BOQ-03", "no": "3.4c", "desc": "Ø100 mm 柔性波纹管", "unit": "m", "qty": 50, "rate": 680, "amt": 34000, "note": "", "tag": "boq"}, {"sec": "BOQ-03", "no": "3.5a", "desc": "4×4 金属方形接线盒", "unit": "no", "qty": 50, "rate": 750, "amt": 37500, "note": "", "tag": "boq"}, {"sec": "BOQ-04", "no": "4.1", "desc": "地脚螺栓 M45 ASTM F1554 Gr.55 热镀锌，L≈1.4 m，含螺母/垫板/100×100×20 锚板及定位模板（12 根/柱 × 12 柱）", "unit": "nr", "qty": 144, "rate": 9200, "amt": 1324800, "note": "ST-3720；BOQ 1.6 未单列", "tag": "add"}, {"sec": "BOQ-04", "no": "4.2", "desc": "柱脚无收缩灌浆（850×850 底板）", "unit": "nr", "qty": 12, "rate": 14500, "amt": 174000, "note": "", "tag": "add"}, {"sec": "BOQ-04", "no": "4.3", "desc": "选料回填及分层压实（含压实度检测）", "unit": "m³", "qty": 510, "rate": 780, "amt": 397800, "note": "开挖 792 m³ − 结构体积约 290 m³", "tag": "add"}, {"sec": "BOQ-04", "no": "4.4", "desc": "基础下压实垫层 Compacted subbase", "unit": "m³", "qty": 80, "rate": 1650, "amt": 132000, "note": "ST-3720 剖面所示，厚度待确认", "tag": "prov"}, {"sec": "BOQ-04", "no": "4.5", "desc": "既有路面破除及恢复（若路面已先行施工）", "unit": "m²", "qty": 360, "rate": 3800, "amt": 1368000, "note": "条件项：取决于 GA-1325 路面施工时序", "tag": "prov"}, {"sec": "BOQ-04", "no": "4.6", "desc": "测量放线、坐标复核及竣工测量", "unit": "LS", "qty": 1, "rate": 180000, "amt": 180000, "note": "", "tag": "add"}, {"sec": "BOQ-04", "no": "4.7", "desc": "地下管线探测及人工探坑", "unit": "LS", "qty": 1, "rate": 120000, "amt": 120000, "note": "", "tag": "add"}, {"sec": "BOQ-04", "no": "4.8a", "desc": "不锈钢 IP66/NEMA 4X 配电箱 IG-01（160AT 主开关，8 回路，含接触器/定时器/手自动）", "unit": "set", "qty": 1, "rate": 420000, "amt": 420000, "note": "EL-4237~4239 所示，BOQ 漏项", "tag": "add"}, {"sec": "BOQ-04", "no": "4.8b", "desc": "不锈钢 IP66/NEMA 4X 配电箱 OG-01 / IML-01（100AT 主开关）", "unit": "set", "qty": 2, "rate": 360000, "amt": 720000, "note": "同上", "tag": "add"}, {"sec": "BOQ-04", "no": "4.9", "desc": "LV SWGR 03 至各配电箱馈线电缆（规格按 Table 1，暂按 4C-25+16 计）", "unit": "m", "qty": 750, "rate": 1450, "amt": 1087500, "note": "暂定：需核实是否已含在主合同电缆清单", "tag": "prov"}, {"sec": "BOQ-04", "no": "4.10", "desc": "配电箱接地（≤1 Ω）及雨棚钢结构等电位/防雷接地", "unit": "set", "qty": 3, "rate": 165000, "amt": 495000, "note": "EL-4111~4114 典型做法", "tag": "add"}, {"sec": "BOQ-04", "no": "4.11", "desc": "桁架上管线固定（免焊抱箍，保护涂层）及支吊架", "unit": "set", "qty": 3, "rate": 60000, "amt": 180000, "note": "", "tag": "add"}, {"sec": "BOQ-04", "no": "4.12", "desc": "电气测试调试、照度测量及报告", "unit": "LS", "qty": 1, "rate": 150000, "amt": 150000, "note": "", "tag": "add"}, {"sec": "BOQ-04", "no": "4.13", "desc": "钢结构深化图及节点计算（B-1 相贯节点、C-1/C-2 柱节点）", "unit": "t", "qty": 132.7, "rate": 4500, "amt": 597150, "note": "", "tag": "add"}, {"sec": "BOQ-04", "no": "4.14", "desc": "吊装工程设计、吊装方案及临时支撑设计", "unit": "LS", "qty": 1, "rate": 280000, "amt": 280000, "note": "", "tag": "add"}, {"sec": "BOQ-04", "no": "4.15", "desc": "第三方检测：CJP 焊缝 UT、钢材复验、混凝土试块、钢筋拉伸、漆膜厚度", "unit": "LS", "qty": 1, "rate": 420000, "amt": 420000, "note": "", "tag": "add"}, {"sec": "BOQ-04", "no": "4.16", "desc": "样品与样板（膜材、标识、涂装样板）", "unit": "LS", "qty": 1, "rate": 80000, "amt": 80000, "note": "", "tag": "add"}, {"sec": "BOQ-00", "no": "0.1", "desc": "变更专项管理及现场监督班组（7 个月，约 ₱380k/月）", "unit": "mth", "qty": 7, "rate": 380000, "amt": 2660000, "note": "工程师、钢结构/电气主管、QA/QC、HSE、测量（部分）", "tag": "prelim"}, {"sec": "BOQ-00", "no": "0.2", "desc": "大型吊车进出场（100t + 50t 汽车吊，2 次）", "unit": "trip", "qty": 2, "rate": 95000, "amt": 190000, "note": "台班费已含在 1.6 单价", "tag": "prelim"}, {"sec": "BOQ-00", "no": "0.3", "desc": "HSE：围挡、高处作业防护、生命线、闸口区域交通疏导", "unit": "LS", "qty": 1, "rate": 380000, "amt": 380000, "note": "", "tag": "prelim"}, {"sec": "BOQ-00", "no": "0.4", "desc": "临时设施：钢构件堆场、预拼装胎架、焊接防风棚", "unit": "LS", "qty": 1, "rate": 250000, "amt": 250000, "note": "", "tag": "prelim"}, {"sec": "BOQ-00", "no": "0.5", "desc": "临时水电", "unit": "LS", "qty": 1, "rate": 90000, "amt": 90000, "note": "", "tag": "prelim"}, {"sec": "BOQ-00", "no": "0.6", "desc": "完工清理及退场", "unit": "LS", "qty": 1, "rate": 60000, "amt": 60000, "note": "", "tag": "prelim"}];
+const SECS = [
+  ['BOQ-01','框架与结构 Frame & Structure'],
+  ['BOQ-02','建筑 Architectural Works'],
+  ['BOQ-03','电气 Electrical Works'],
+  ['BOQ-04','BOQ 漏项（按图纸必须做）'],
+  ['BOQ-00','变更专项措施费 Preliminaries']
+];
+const $ = id => document.getElementById(id);
+const fmt = n => Math.round(n).toLocaleString('en-US');
+const fmtM = n => '₱ ' + (n/1e6).toFixed(2) + ' M';
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+function calc(){
+  const ins=+$('pIns').value||0, ho=+$('pHo').value||0, risk=+$('pRisk').value||0, pr=+$('pProfit').value||0, vat=+$('pVat').value||0;
+  const incProv=$('incProv').checked, showAll=$('showAll').checked;
+  const f = 1 + (ins+ho+risk+pr)/100;
+  let direct=0, html='';
+  const secTot={};
+  for(const [code,name] of SECS){
+    const rows = ITEMS.filter(i=>i.sec===code);
+    let st=0, body='';
+    for(const i of rows){
+      const excluded = i.tag==='prov' && !incProv;
+      if(!excluded) st+=i.amt;
+      const rate = showAll ? i.rate*f : i.rate;
+      const amt = showAll ? i.amt*f : i.amt;
+      const chip = i.tag==='add' ? ' <span class="chip c-add">新增</span>' : i.tag==='prov' ? ' <span class="chip c-prov">'+(excluded?'暂定·未计入':'暂定')+'</span>' : '';
+      body += `<tr${excluded?' style="opacity:.45"':''}><td class="mono">${esc(i.no)}</td><td>${esc(i.desc)}${chip}${i.note?'<span class="note">'+esc(i.note)+'</span>':''}</td><td>${esc(i.unit)}</td><td class="num">${i.qty.toLocaleString('en-US')}</td><td class="num">${fmt(rate)}</td><td class="num">${fmt(amt)}</td></tr>`;
+    }
+    secTot[code]=st; direct+=st;
+    const shown = showAll? st*f : st;
+    html += `<details class="sec"${code==='BOQ-04'?' open':''}><summary><span>${code} · ${esc(name)}</span><span class="num">₱ ${fmt(shown)}</span></summary><div class="tblwrap"><table><thead><tr><th>编号</th><th>内容</th><th>单位</th><th class="num">数量</th><th class="num">${showAll?'综合单价':'直接单价'}</th><th class="num">金额</th></tr></thead><tbody>${body}<tr class="sub"><td></td><td>小计</td><td></td><td></td><td></td><td class="num">${fmt(shown)}</td></tr></tbody></table></div></details>`;
+  }
+  $('boqTables').innerHTML = html;
+  const insA=direct*ins/100, hoA=direct*ho/100, rkA=direct*risk/100, prA=direct*pr/100;
+  const net=direct+insA+hoA+rkA+prA, vatA=net*vat/100, gross=net+vatA;
+  const engBoq = (secTot['BOQ-01']+secTot['BOQ-02']+secTot['BOQ-03'])*f;
+  $('sumgrid').innerHTML = [
+    ['工程师 BOQ 条目（综合价）',fmt(engBoq)],
+    ['新增 + 措施（综合价）',fmt((secTot['BOQ-04']+secTot['BOQ-00'])*f)],
+    ['直接成本合计',fmt(direct)],
+    ['保险/管理/风险',fmt(insA+hoA+rkA)],
+    ['利润',fmt(prA)],
+    ['报价（不含 VAT）',fmt(net),'hl'],
+    ['VAT',fmt(vatA)],
+    ['报价（含 VAT）',fmt(gross),'hl']
+  ].map(([k,v,c])=>`<div class="${c||''}"><div class="k">${k}</div><div class="v">₱ ${v}</div></div>`).join('');
+  $('heroTotal').textContent = fmtM(net);
+  $('heroRange').textContent = '区间 ' + fmtM(net*0.9) + ' ~ ' + fmtM(net*1.15) + ' · 含 VAT ' + fmtM(gross) + ' · 约 USD ' + (net/58/1e6).toFixed(2) + ' M';
+}
+['pIns','pHo','pRisk','pProfit','pVat','incProv','showAll'].forEach(id=>$(id).addEventListener('input',calc));
+calc();
+
+/* Gantt */
+const G0=new Date('2026-10-01'), G1=new Date('2027-06-01');
+const span=G1-G0, pct=d=>((new Date(d)-G0)/span*100);
+const TASKS=[
+  ['g','合同与设计'],
+  ['确认函 + 建议书编制提交','2026-10-02','2026-10-16','c'],
+  ['工程师审核、价格谈判','2026-10-16','2026-11-20',''],
+  ['钢结构/膜/标识深化设计','2026-10-05','2026-11-06','c'],
+  ['工程师审批深化图','2026-11-06','2026-11-27','c'],
+  ['业主提供标识图文','2026-11-01','2026-12-31',''],
+  ['g','采购与加工'],
+  ['地脚螺栓采购','2026-10-12','2026-11-23',''],
+  ['进口钢管采购','2026-11-16','2027-01-08','c'],
+  ['钢结构加工、预拼装、涂装','2027-01-04','2027-02-19','c'],
+  ['海运及清关','2027-02-19','2027-03-08','c'],
+  ['膜材加工','2026-12-07','2027-03-05',''],
+  ['灯具、配电箱采购','2026-11-16','2027-02-12',''],
+  ['g','现场施工'],
+  ['基础施工（3 座流水）','2026-10-26','2026-12-18',''],
+  ['混凝土养护、回填','2026-12-18','2027-01-22',''],
+  ['钢柱与桁架吊装（3 座）','2027-03-08','2027-04-09','c'],
+  ['膜屋面安装张拉','2027-04-05','2027-05-07','c'],
+  ['标识牌安装','2027-04-12','2027-05-07',''],
+  ['电气安装','2027-03-22','2027-05-07',''],
+  ['测试调试、验收移交','2027-05-07','2027-05-21','c'],
+  ['m','完工移交','2027-05-21']
+];
+let gh='<div class="lbl" style="background:var(--paper);font-weight:700">工作内容</div><div class="hdr">';
+const months=['2026-10','2026-11','2026-12','2027-01','2027-02','2027-03','2027-04','2027-05'];
+months.forEach(m=>{gh+=`<span style="left:${pct(m+'-01')}%">${m.slice(2).replace('-','/')}</span>`});
+gh+='</div>';
+const today=pct('2026-10-02');
+for(const t of TASKS){
+  if(t[0]==='g'){gh+=`<div class="lbl grp">${t[1]}</div><div class="lane grp"></div>`;continue}
+  if(t[0]==='m'){gh+=`<div class="lbl"><b>◆ ${t[1]}</b>&nbsp;<span class="mono muted">${t[2]}</span></div><div class="lane"><div class="today" style="left:${today}%"></div><div class="bar ms" style="left:calc(${pct(t[2])}% - 6px)"></div></div>`;continue}
+  const [n,s,e,c]=t;
+  gh+=`<div class="lbl">${n}</div><div class="lane"><div class="today" style="left:${today}%"></div><div class="bar ${c?'crit':''}" style="left:${pct(s)}%;width:${pct(e)-pct(s)}%" title="${s} → ${e}"></div></div>`;
+}
+$('gantt').innerHTML=gh;
+</script>
+
+</body></html>
